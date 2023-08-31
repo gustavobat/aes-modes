@@ -5,13 +5,13 @@ use hex_literal::hex;
 const BLOCK_SIZE: usize = 16;
 
 fn decrypt_cbc(key: &[u8], iv: &[u8], cipher_text: &[u8]) -> String {
-    let aes_cbc = Aes128CBC::new(GenericArray::from_slice(key), GenericArray::from_slice(&iv));
+    let aes_cbc = Aes128CBC::new(GenericArray::from_slice(key), GenericArray::from_slice(iv));
     let plain_text = aes_cbc.decrypt(cipher_text);
     String::from_utf8_lossy(&plain_text).into_owned()
 }
 
 fn decrypt_ctr(key: &[u8], iv: &[u8], cipher_text: &[u8]) -> String {
-    let aes_ctr = Aes128CTR::new(GenericArray::from_slice(key), GenericArray::from_slice(&iv));
+    let aes_ctr = Aes128CTR::new(GenericArray::from_slice(key), GenericArray::from_slice(iv));
     let plain_text = aes_ctr.decrypt(cipher_text);
     String::from_utf8_lossy(&plain_text).into_owned()
 }
