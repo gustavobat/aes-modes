@@ -16,6 +16,7 @@ fn decrypt_ctr(key: &[u8], iv: &[u8], cipher_text: &[u8]) -> String {
     String::from_utf8_lossy(&plain_text).into_owned()
 }
 
+// Solve course exercises
 fn main() {
     let key = hex!("140b41b22a29beb4061bda66b6747e14");
     let input = hex!(

@@ -1,8 +1,15 @@
+//! This crate contains the implementation of AES-128 in CBC and CTR modes.
+//! The implementation is based on the `aes` crate.
+//! The structs `Aes128CBC` and `Aes128CTR` implement the respective modes.
+//! The `encrypt` and `decrypt` methods are used to encrypt and decrypt an
+//! u8 slice. They return owned objects to preserve the original data.
+
 use aes::{
     cipher::{generic_array::GenericArray, BlockDecrypt, KeyInit, BlockEncrypt},
     Aes128, Block,
 };
 
+/// AES-128 in CBC mode with PKCS5 padding scheme
 pub struct Aes128CBC {
     key: Block,
     iv: Block,
@@ -50,6 +57,7 @@ impl Aes128CBC {
     }
 }
 
+/// AES-128 in CTR mode with PKCS5 padding scheme
 pub struct Aes128CTR {
     key: Block,
     iv: Block,
